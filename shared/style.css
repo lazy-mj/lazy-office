@@ -279,12 +279,12 @@ details.readme .body b{color:var(--primary-dark);}
 /* JS가 실제 헤더를 넣기 전, 이 자리만큼 미리 공간을 잡아둬서 삽입 시 화면이
    덜컹거리거나 "헤더 없는 화면"이 잠깐 스치는 걸 방지함 (header.js가 이 자리를
    실제 헤더로 교체함) */
-.site-header-placeholder{height:60px;}
+.site-header-placeholder{height:52px;}
 
 .site-header{
   position:sticky; top:0; z-index:50;
   display:flex; align-items:center; justify-content:space-between;
-  padding:14px 28px;
+  padding:10px 28px;
   background:rgba(255,255,255,0.55);
   backdrop-filter:blur(16px) saturate(160%); -webkit-backdrop-filter:blur(16px) saturate(160%);
   border-bottom:1px solid rgba(220,223,227,0.6);
@@ -299,22 +299,22 @@ details.readme .body b{color:var(--primary-dark);}
 .site-header nav.desktop-nav{display:flex; gap:2px;}
 .site-header nav a{
   font-size:13.5px; font-weight:600; color:var(--ink-soft); text-decoration:none;
-  padding:8px 14px; border-radius:8px; transition:background .15s, color .15s;
+  padding:8px 14px; border-radius:999px; transition:background .15s, color .15s;
 }
 .site-header nav a:hover{background:rgba(11,47,92,0.06); color:var(--office-blue);}
-.site-header nav a.active{color:var(--office-blue); background:rgba(11,47,92,0.08);}
+.site-header nav a.active{color:var(--office-blue); background:none;}
 
 .hamburger-btn{display:none; background:none; border:none; cursor:pointer; padding:6px; color:var(--ink);}
 .hamburger-btn .icon-svg{width:22px; height:22px;}
 
 .mobile-nav{
-  display:none; position:fixed; top:60px; left:0; right:0; z-index:49;
+  display:none; position:fixed; top:52px; left:0; right:0; z-index:49;
   background:rgba(255,255,255,0.85); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
   border-bottom:1px solid var(--border); padding:8px; flex-direction:column; gap:2px;
 }
 .mobile-nav.open{display:flex;}
-.mobile-nav a{font-size:14.5px; font-weight:600; color:var(--ink-soft); text-decoration:none; padding:12px 16px; border-radius:8px;}
-.mobile-nav a.active{color:var(--office-blue); background:rgba(11,47,92,0.08);}
+.mobile-nav a{font-size:14.5px; font-weight:600; color:var(--ink-soft); text-decoration:none; padding:12px 16px; border-radius:999px;}
+.mobile-nav a.active{color:var(--office-blue); background:none;}
 .mobile-nav a:hover{background:rgba(11,47,92,0.06);}
 
 @media (max-width: 640px){
