@@ -19,7 +19,6 @@
   'use strict';
 
   const TABS = [
-    { key: 'home',      label: '홈',       url: 'https://lazy-mj.github.io/lazy-office/' },
     { key: 'billsplit', label: '전화요금',  url: 'https://lazy-mj.github.io/lazy-billsplit/' },
     { key: 'jeongsan',  label: '예산검증',  url: 'https://lazy-mj.github.io/lazy-jeongsan/' }
   ];

@@ -334,7 +334,13 @@ details.readme .body b{color:var(--primary-dark);}
 .hero::before, .hero::after{content:''; position:absolute; border-radius:50%; filter:blur(60px); z-index:0;}
 .hero::before{width:300px; height:300px; background:#0071e3; opacity:.22; top:-90px; left:calc(50% - 200px);}
 .hero::after{width:240px; height:240px; background:#B15A3D; opacity:.12; top:-30px; left:calc(50% + 60px);}
-.hero-inner{position:relative; z-index:1;}
+.hero-inner{position:relative; z-index:1; animation:page-reveal .9s cubic-bezier(.22,.9,.35,1) both;}
+
+@keyframes page-reveal{
+  from{ opacity:0; filter:blur(14px); transform:translateY(8px) scale(1.01); }
+  to{ opacity:1; filter:blur(0); transform:translateY(0) scale(1); }
+}
+.site-header{animation:page-reveal .7s cubic-bezier(.22,.9,.35,1) both;}
 
 /* Clash Display(Fontshare) 워드마크 - 로드 실패 시 자동으로 다음 폰트로 폴백됨 */
 .wordmark{
@@ -347,15 +353,26 @@ details.readme .body b{color:var(--primary-dark);}
 
 /* .hero 안에서만 적용되는 유리질감 lock-note (다른 페이지의 기본 .lock-note는 그대로 유지됨) */
 .hero .lock-note{
+  position:relative; overflow:hidden;
   display:inline-flex; align-items:center; gap:6px; font-size:12.5px; color:var(--primary); font-weight:600; margin:0;
   background:rgba(255,255,255,0.55); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
   border:1px solid rgba(255,255,255,0.7); padding:7px 16px; border-radius:999px;
   box-shadow:0 4px 14px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.7);
 }
-.hero .lock-note .icon-svg{width:14px; height:14px; flex-shrink:0;}
+.hero .lock-note::after{
+  content:''; position:absolute; top:0; left:-160%; width:55%; height:100%;
+  background:linear-gradient(115deg, transparent 20%, rgba(255,255,255,0.75) 50%, transparent 80%);
+  animation:lock-note-shimmer 4.2s ease-in-out infinite;
+}
+@keyframes lock-note-shimmer{
+  0%{left:-160%;}
+  55%{left:160%;}
+  100%{left:160%;}
+}
+.hero .lock-note .icon-svg{width:14px; height:14px; flex-shrink:0; position:relative; z-index:1;}
 
 /* ---------- 플랫폼 홈 전용: 카드 ---------- */
-.content{max-width:900px; margin:-56px auto 0; padding:0 24px 60px; position:relative; z-index:2;}
+.content{max-width:900px; margin:-56px auto 0; padding:0 24px 60px; position:relative; z-index:2; animation:page-reveal 1s cubic-bezier(.22,.9,.35,1) .12s both;}
 .section-label{font-size:12.5px; font-weight:700; color:var(--ink-soft); text-transform:uppercase; letter-spacing:0.05em; margin:0 0 14px 4px;}
 .module-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:16px;}
 
