@@ -5,10 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://api.fontshare.com; font-src 'self' https://cdn.fontshare.com; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none';">
 <title>lazy-office · 업무 자동화 모음</title>
-<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700&display=swap">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@200,600,700&display=swap">
 <link rel="stylesheet" href="shared/style.css">
 </head>
 <body>
+
+<header class="site-header">
+  <a class="brand" href="index.html"><span class="lazy">Lazy</span><span class="office">Office</span></a>
+  <nav class="desktop-nav">
+    <a href="index.html" class="active">홈</a>
+    <a href="https://lazy-mj.github.io/lazy-billsplit/" target="_blank" rel="noopener noreferrer">전화요금</a>
+    <a href="https://lazy-mj.github.io/lazy-jeongsan/" target="_blank" rel="noopener noreferrer">예산검증</a>
+  </nav>
+  <button class="hamburger-btn" id="hamburgerBtn" aria-label="메뉴 열기" aria-expanded="false">
+    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
+  </button>
+</header>
+
+<nav class="mobile-nav" id="mobileNav">
+  <a href="index.html" class="active">홈</a>
+  <a href="https://lazy-mj.github.io/lazy-billsplit/" target="_blank" rel="noopener noreferrer">전화요금</a>
+  <a href="https://lazy-mj.github.io/lazy-jeongsan/" target="_blank" rel="noopener noreferrer">예산검증</a>
+</nav>
 
 <section class="hero">
   <div class="hero-inner">
@@ -65,6 +83,8 @@
     </a>
   </div>
 </div>
+
+<script src="hub.js"></script>
 
 </body>
 </html>

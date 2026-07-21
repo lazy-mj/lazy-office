@@ -17,6 +17,7 @@
   --ink:#1D2733;
   --ink-soft:#5B6B7C;
   --mono:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+  --office-blue:#0B2F5C;
 }
 *{box-sizing:border-box;}
 html,body{margin:0;padding:0;}
@@ -274,6 +275,48 @@ details.readme .body b{color:var(--primary-dark);}
 .repo-link{display:inline-block; margin-top:8px; color:var(--primary); font-weight:700; text-decoration:none;}
 .repo-link:hover{text-decoration:underline;}
 
+/* ---------- 사이트 공통 헤더: 글래스모피즘 스티키 (좌측 브랜드 + 우측 탭) ---------- */
+.site-header{
+  position:sticky; top:0; z-index:50;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 28px;
+  background:rgba(255,255,255,0.55);
+  backdrop-filter:blur(16px) saturate(160%); -webkit-backdrop-filter:blur(16px) saturate(160%);
+  border-bottom:1px solid rgba(220,223,227,0.6);
+}
+.site-header .brand{
+  font-family:"Clash Display", -apple-system, "Apple SD Gothic Neo", "Pretendard", sans-serif;
+  font-size:19px; letter-spacing:-0.02em; text-decoration:none; display:flex;
+}
+.site-header .brand .lazy{color:var(--ink); font-weight:200;}
+.site-header .brand .office{color:var(--office-blue); font-weight:700;}
+
+.site-header nav.desktop-nav{display:flex; gap:2px;}
+.site-header nav a{
+  font-size:13.5px; font-weight:600; color:var(--ink-soft); text-decoration:none;
+  padding:8px 14px; border-radius:8px; transition:background .15s, color .15s;
+}
+.site-header nav a:hover{background:rgba(11,47,92,0.06); color:var(--office-blue);}
+.site-header nav a.active{color:var(--office-blue); background:rgba(11,47,92,0.08);}
+
+.hamburger-btn{display:none; background:none; border:none; cursor:pointer; padding:6px; color:var(--ink);}
+.hamburger-btn .icon-svg{width:22px; height:22px;}
+
+.mobile-nav{
+  display:none; position:fixed; top:60px; left:0; right:0; z-index:49;
+  background:rgba(255,255,255,0.85); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border); padding:8px; flex-direction:column; gap:2px;
+}
+.mobile-nav.open{display:flex;}
+.mobile-nav a{font-size:14.5px; font-weight:600; color:var(--ink-soft); text-decoration:none; padding:12px 16px; border-radius:8px;}
+.mobile-nav a.active{color:var(--office-blue); background:rgba(11,47,92,0.08);}
+.mobile-nav a:hover{background:rgba(11,47,92,0.06);}
+
+@media (max-width: 640px){
+  .site-header nav.desktop-nav{display:none;}
+  .hamburger-btn{display:inline-flex;}
+}
+
 /* ---------- 플랫폼 홈(업무 선택) 전용: 히어로 ---------- */
 .icon-svg{stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; display:block;}
 
@@ -293,8 +336,8 @@ details.readme .body b{color:var(--primary-dark);}
   font-family:"Clash Display", -apple-system, "Apple SD Gothic Neo", "Pretendard", sans-serif;
   font-size:clamp(42px, 7vw, 68px); font-weight:600; letter-spacing:-0.035em; margin:0 0 14px; line-height:1.0;
 }
-.wordmark .lazy{color:var(--ink); font-weight:300;}
-.wordmark .office{color:var(--ink); font-weight:800;}
+.wordmark .lazy{color:var(--ink); font-weight:200;}
+.wordmark .office{color:var(--office-blue); font-weight:700;}
 .hero p{font-size:15.5px; color:var(--ink-soft); margin:0 auto 20px; max-width:440px;}
 
 /* .hero 안에서만 적용되는 유리질감 lock-note (다른 페이지의 기본 .lock-note는 그대로 유지됨) */
@@ -349,13 +392,17 @@ details.readme .body b{color:var(--primary-dark);}
 .content .foot-note{margin-top:32px;}
 
 /* 허브 전용 푸터 - 가운데 정렬, 저작권 + GitHub 저장소 링크 */
-.hub-footer{text-align:center; margin-top:40px; padding-top:22px; border-top:1px dashed var(--border);}
-.hub-footer .copyright{font-size:12px; color:var(--ink-soft); margin:0 0 8px;}
+.hub-footer{
+  display:flex; align-items:center; justify-content:center; gap:14px;
+  margin:40px auto 0; padding-top:22px; border-top:1px dashed var(--border);
+}
+.hub-footer .copyright{font-size:12px; color:var(--ink-soft); margin:0;}
+.hub-footer .divider{width:3px; height:3px; border-radius:50%; background:var(--ink-soft); opacity:.5; flex-shrink:0;}
 .hub-footer .repo-link{
   display:inline-flex; align-items:center; gap:6px; font-size:12.5px; font-weight:700;
   color:var(--ink-soft); text-decoration:none;
 }
-.hub-footer .repo-link:hover{color:var(--primary);}
+.hub-footer .repo-link:hover{color:var(--office-blue);}
 .hub-footer .repo-link .icon-svg{width:15px; height:15px;}
 
 /* =========================================================================
