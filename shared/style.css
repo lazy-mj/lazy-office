@@ -31,16 +31,41 @@ body{
 .shell{max-width:1160px;margin:0 auto;padding:32px 20px 96px;}
 
 /* ---------- Header (공통) ---------- */
-.app-header{margin-bottom:22px;}
+.app-header{
+  position:relative; overflow:hidden;
+  margin-bottom:22px; padding:24px 26px; border-radius:20px;
+  background:linear-gradient(180deg, #eef4fb 0%, var(--bg) 100%);
+  border:1px solid var(--border);
+}
+.app-header::before, .app-header::after{content:''; position:absolute; border-radius:50%; filter:blur(50px); z-index:0; pointer-events:none;}
+.app-header::before{width:220px; height:220px; background:#0071e3; opacity:.16; top:-90px; left:-60px;}
+.app-header::after{width:180px; height:180px; background:var(--office-blue); opacity:.10; top:-60px; right:10%;}
+.app-header .title-row, .app-header .mascot-img{position:relative; z-index:1;}
 .title-row{display:flex; align-items:center; justify-content:space-between; gap:24px;}
 .title-text{flex-shrink:0;}
 .title-line{display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
-.title-row h1{font-size:24px; margin:0; color:var(--ink); letter-spacing:-0.01em;}
-.org-tag{
-  font-size:12.5px; font-weight:700; color:var(--primary); background:var(--secondary);
-  padding:4px 10px; border-radius:20px; border:1px solid #cfe4f8;
+.title-row h1{
+  font-family:"Clash Display", -apple-system, "Apple SD Gothic Neo", "Pretendard", sans-serif;
+  font-size:25px; font-weight:600; margin:0; color:var(--ink); letter-spacing:-0.02em;
+  display:flex; align-items:center; gap:9px;
 }
-.lock-note{font-size:13px; color:var(--ink-soft); margin:8px 0 0;}
+.title-icon{color:var(--office-blue); flex-shrink:0;}
+.org-tag{
+  font-size:12.5px; font-weight:700; color:var(--office-blue); background:#fff;
+  padding:4px 12px; border-radius:999px; border:1px solid rgba(11,47,92,0.18);
+}
+.lock-note{
+  position:relative; overflow:hidden; display:inline-flex; align-items:center; gap:6px;
+  font-size:12.5px; color:var(--primary); font-weight:600; margin:10px 0 0;
+  background:rgba(255,255,255,0.6); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,0.7); padding:6px 14px; border-radius:999px;
+  box-shadow:0 3px 10px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.7);
+}
+.lock-note::after{
+  content:''; position:absolute; top:0; left:-160%; width:55%; height:100%;
+  background:linear-gradient(115deg, transparent 20%, rgba(255,255,255,0.8) 50%, transparent 80%);
+  animation:lock-note-shimmer 4.6s ease-in-out infinite;
+}
 .mascot-img{height:104px; width:auto; flex-shrink:0;}
 
 /* ---------- Platform Nav (공통, 업무 전환용) ---------- */
@@ -69,8 +94,8 @@ body{
 
 /* ---------- Card ---------- */
 .card{
-  background:var(--card); border:1px solid var(--border); border-radius:14px;
-  padding:26px; margin-bottom:22px; box-shadow:0 1px 2px rgba(16,24,40,0.03);
+  background:var(--card); border:1px solid var(--border); border-radius:18px;
+  padding:26px; margin-bottom:22px; box-shadow:0 1px 3px rgba(0,0,0,0.04);
 }
 .card-warn{border-left:4px solid var(--danger);}
 .card-head{margin-bottom:20px;}
@@ -146,7 +171,7 @@ body{
 }
 .dropzone:hover, .dropzone.drag-over{border-color:var(--primary); background:var(--secondary);}
 .dropzone-inner{display:flex; flex-direction:column; align-items:center; gap:6px;}
-.dz-icon{font-size:26px;}
+.dz-icon{color:var(--ink-soft); display:inline-flex;}
 .dz-text{font-size:14px; color:var(--ink);}
 .dz-hint{font-size:12px; color:var(--ink-soft);}
 
@@ -272,8 +297,9 @@ details.readme .body ul{margin:10px 0 0; padding-left:20px;}
 details.readme .body li{margin-bottom:8px;}
 details.readme .body b{color:var(--primary-dark);}
 .foot-note{font-size:12px; color:var(--ink-soft); margin-top:20px; border-top:1px dashed var(--border); padding-top:14px;}
-.repo-link{display:inline-block; margin-top:8px; color:var(--primary); font-weight:700; text-decoration:none;}
+.repo-link{display:inline-flex; align-items:center; gap:6px; margin-top:8px; color:var(--primary); font-weight:700; text-decoration:none;}
 .repo-link:hover{text-decoration:underline;}
+.repo-link .icon-svg{width:15px; height:15px; flex-shrink:0;}
 
 /* ---------- 사이트 공통 헤더: 글래스모피즘 스티키 (좌측 브랜드 + 우측 탭) ---------- */
 /* JS가 실제 헤더를 넣기 전, 이 자리만큼 미리 공간을 잡아둬서 삽입 시 화면이
