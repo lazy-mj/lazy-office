@@ -68,6 +68,33 @@ body{
 }
 .mascot-img{height:104px; width:auto; flex-shrink:0;}
 
+/* ---------- 개별 업무 도구용 히어로 (허브 홈 전용 .hero와는 별개 이름) ---------- */
+.tool-hero{
+  position:relative; overflow:hidden; text-align:center;
+  padding:56px 24px 44px; margin:0 -20px 28px;
+  background:linear-gradient(180deg, #eef4fb 0%, var(--bg) 100%);
+}
+.tool-hero::before, .tool-hero::after{content:''; position:absolute; border-radius:50%; filter:blur(55px); z-index:0; pointer-events:none;}
+.tool-hero::before{width:260px; height:260px; background:#0071e3; opacity:.24; top:-90px; left:calc(50% - 220px);}
+.tool-hero::after{width:220px; height:220px; background:var(--office-blue); opacity:.14; top:-60px; left:calc(50% + 80px);}
+.tool-hero-inner{position:relative; z-index:1;}
+.tool-icon-badge{
+  position:relative; overflow:hidden; width:58px; height:58px; border-radius:16px; margin:0 auto 18px;
+  display:flex; align-items:center; justify-content:center;
+  background:linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.25) 100%);
+  backdrop-filter:blur(14px) saturate(160%); -webkit-backdrop-filter:blur(14px) saturate(160%);
+  border:1px solid rgba(255,255,255,0.7);
+  box-shadow:0 8px 22px rgba(11,47,92,0.18), inset 0 1px 0 rgba(255,255,255,0.85), inset 0 -6px 12px rgba(11,47,92,0.08);
+}
+.tool-icon-badge img{width:30px; height:30px; object-fit:contain;}
+.tool-hero h1{
+  font-family:"Clash Display", -apple-system, "Apple SD Gothic Neo", "Pretendard", sans-serif;
+  font-size:32px; font-weight:700; letter-spacing:-0.02em; margin:0 0 10px; color:var(--ink);
+}
+.tool-tagline{font-size:14.5px; color:var(--ink-soft); margin:0 0 18px;}
+/* .tool-hero 안에서만 쓰는 유리질감 lock-note (기본 .lock-note는 그대로 유지) */
+.tool-hero .lock-note{margin:0;}
+
 /* ---------- Platform Nav (공통, 업무 전환용) ---------- */
 .platform-nav{display:flex; align-items:center; gap:6px; margin:0 0 18px; flex-wrap:wrap;}
 .platform-nav a{
