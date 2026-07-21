@@ -288,7 +288,7 @@ details.readme .body b{color:var(--primary-dark);}
   font-family:"Clash Display", -apple-system, "Apple SD Gothic Neo", "Pretendard", sans-serif;
   font-size:19px; letter-spacing:-0.02em; text-decoration:none; display:flex;
 }
-.site-header .brand .lazy{color:var(--ink); font-weight:200;}
+.site-header .brand .lazy{color:var(--ink); font-weight:600;}
 .site-header .brand .office{color:var(--office-blue); font-weight:700;}
 
 .site-header nav.desktop-nav{display:flex; gap:2px;}
@@ -336,7 +336,7 @@ details.readme .body b{color:var(--primary-dark);}
   font-family:"Clash Display", -apple-system, "Apple SD Gothic Neo", "Pretendard", sans-serif;
   font-size:clamp(42px, 7vw, 68px); font-weight:600; letter-spacing:-0.035em; margin:0 0 14px; line-height:1.0;
 }
-.wordmark .lazy{color:var(--ink); font-weight:200;}
+.wordmark .lazy{color:var(--ink); font-weight:600;}
 .wordmark .office{color:var(--office-blue); font-weight:700;}
 .hero p{font-size:15.5px; color:var(--ink-soft); margin:0 auto 20px; max-width:440px;}
 
@@ -364,7 +364,7 @@ details.readme .body b{color:var(--primary-dark);}
 .module-card:hover{box-shadow:0 14px 30px rgba(0,91,172,0.14); transform:translateY(-3px); border-color:var(--primary);}
 
 .module-card .icon{
-  width:44px; height:44px; border-radius:12px; margin-bottom:2px;
+  width:44px; height:44px; border-radius:12px; margin-bottom:10px;
   display:flex; align-items:center; justify-content:center; flex-shrink:0;
 }
 .module-card .icon .icon-svg{width:22px; height:22px;}
@@ -388,22 +388,24 @@ details.readme .body b{color:var(--primary-dark);}
 .module-card.suggest .icon{background:#fff; color:#5B6B7C;}
 .module-card.suggest h3{color:#4a5a68;}
 .module-card.suggest p{color:#7c8b98;}
+.module-card.suggest .suggest-contact{margin-top:2px; font-size:11.5px; font-weight:600; color:#5f7488;}
 
 .content .foot-note{margin-top:32px;}
 
 /* 허브 전용 푸터 - 가운데 정렬, 저작권 + GitHub 저장소 링크 */
 .hub-footer{
-  display:flex; align-items:center; justify-content:center; gap:14px;
+  display:flex; align-items:center; justify-content:center; gap:10px;
   margin:40px auto 0; padding-top:22px; border-top:1px dashed var(--border);
 }
-.hub-footer .copyright{font-size:12px; color:var(--ink-soft); margin:0;}
-.hub-footer .divider{width:3px; height:3px; border-radius:50%; background:var(--ink-soft); opacity:.5; flex-shrink:0;}
+.hub-footer p, .hub-footer span, .hub-footer a{margin:0; line-height:1;}
+.hub-footer .copyright{font-size:12px; color:var(--ink-soft);}
+.hub-footer .divider{width:3px; height:3px; border-radius:50%; background:var(--ink-soft); opacity:.5; flex-shrink:0; align-self:center;}
 .hub-footer .repo-link{
   display:inline-flex; align-items:center; gap:6px; font-size:12.5px; font-weight:700;
   color:var(--ink-soft); text-decoration:none;
 }
 .hub-footer .repo-link:hover{color:var(--office-blue);}
-.hub-footer .repo-link .icon-svg{width:15px; height:15px;}
+.hub-footer .repo-link .icon-svg{width:15px; height:15px; fill:currentColor; stroke:none; flex-shrink:0;}
 
 /* =========================================================================
    반응형 (모바일) — 이 블록만 고치면 모든 업무 화면에 동일하게 적용됩니다.

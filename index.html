@@ -4,29 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://api.fontshare.com; font-src 'self' https://cdn.fontshare.com; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none';">
-<title>lazy-office · 업무 자동화 모음</title>
-<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@200,600,700&display=swap">
+<title>LazyOffice</title>
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@400,600,700&display=swap">
 <link rel="stylesheet" href="shared/style.css">
 </head>
 <body>
-
-<header class="site-header">
-  <a class="brand" href="index.html"><span class="lazy">Lazy</span><span class="office">Office</span></a>
-  <nav class="desktop-nav">
-    <a href="index.html" class="active">홈</a>
-    <a href="https://lazy-mj.github.io/lazy-billsplit/" target="_blank" rel="noopener noreferrer">전화요금</a>
-    <a href="https://lazy-mj.github.io/lazy-jeongsan/" target="_blank" rel="noopener noreferrer">예산검증</a>
-  </nav>
-  <button class="hamburger-btn" id="hamburgerBtn" aria-label="메뉴 열기" aria-expanded="false">
-    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
-  </button>
-</header>
-
-<nav class="mobile-nav" id="mobileNav">
-  <a href="index.html" class="active">홈</a>
-  <a href="https://lazy-mj.github.io/lazy-billsplit/" target="_blank" rel="noopener noreferrer">전화요금</a>
-  <a href="https://lazy-mj.github.io/lazy-jeongsan/" target="_blank" rel="noopener noreferrer">예산검증</a>
-</nav>
 
 <section class="hero">
   <div class="hero-inner">
@@ -40,7 +22,6 @@
 </section>
 
 <div class="content">
-  <p class="section-label">사용 가능한 도구</p>
   <div class="module-grid">
 
     <a class="module-card c-navy" href="https://lazy-mj.github.io/lazy-billsplit/" target="_blank" rel="noopener noreferrer">
@@ -71,12 +52,14 @@
       </div>
       <h3>다음엔 어떤 자동화가 필요할까요?</h3>
       <p>다음에 만들면 좋을 업무를 제안해주세요.</p>
+      <p class="suggest-contact">📨 문의 : 전민지</p>
     </div>
 
   </div>
 
   <div class="hub-footer">
     <p class="copyright">© 2026 Lazy Office</p>
+    <span class="divider"></span>
     <a class="repo-link" href="https://github.com/lazy-mj/lazy-office" target="_blank" rel="noopener noreferrer">
       <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2C6.48 2 2 6.58 2 12.17c0 4.47 2.87 8.26 6.84 9.6.5.1.68-.22.68-.48 0-.24-.01-1.02-.01-1.85-2.78.62-3.37-1.19-3.37-1.19-.45-1.17-1.11-1.48-1.11-1.48-.91-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.55 2.34 1.1 2.91.84.09-.66.35-1.1.63-1.36-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.59.69.48A10.02 10.02 0 0 0 22 12.17C22 6.58 17.52 2 12 2Z"/></svg>
       Repository
@@ -84,7 +67,7 @@
   </div>
 </div>
 
-<script src="hub.js"></script>
+<script src="shared/header.js" data-active="home"></script>
 
 </body>
 </html>
