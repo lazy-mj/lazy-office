@@ -1,10 +1,17 @@
 /* =========================================================================
    lazy-office 공통 헤더 (shared/header.js)
-   각 도구 레포는 아래처럼 <body> 맨 끝에 스크립트 한 줄만 추가하면 됩니다.
+   각 도구 레포는 <body> 맨 위에 자리(placeholder) 하나와, 맨 끝에 스크립트
+   한 줄을 추가하면 됩니다.
 
+     <body>
+     <div class="site-header-placeholder"></div>   ← 헤더 삽입 전 빈 화면 방지용
+     ...
      <script src=".../shared/header.js" data-active="billsplit"></script>
+     </body>
 
    data-active 값: "home" | "billsplit" | "jeongsan"
+   placeholder를 안 넣어도 동작은 하지만(안전장치 있음), 헤더가 나중에
+   삽입되면서 화면이 잠깐 덜컹거리는 걸 막으려면 꼭 넣어주세요.
    헤더 마크업/스타일을 바꿀 일이 있으면 이 파일과 shared/style.css의
    .site-header 관련 규칙만 고치면 모든 도구에 한 번에 반영됩니다.
    ========================================================================= */
@@ -19,9 +26,9 @@
 
   const activeKey = (document.currentScript && document.currentScript.dataset.active) || 'home';
 
-  function linkAttrs(tab){
-    // 현재 보고 있는 페이지 자기 자신으로는 target=_blank를 걸지 않음(불필요한 새 탭 방지)
-    return tab.key === activeKey ? '' : ' target="_blank" rel="noopener noreferrer"';
+  function linkAttrs(){
+    // 헤더 탭은 항상 같은 탭에서 이동 (새 탭 안 띄움)
+    return '';
   }
 
   const navLinksHtml = TABS.map(tab =>
@@ -41,12 +48,20 @@
 
   const wrapper = document.createElement('div');
   wrapper.innerHTML = headerHtml.trim();
-  // 헤더를 body 맨 앞에 삽입 (스크립트 태그 자체는 성능을 위해 body 끝에 둬도 무방)
-  // body.firstChild는 매 삽입마다 바뀌므로, 원래 첫 자식을 고정된 기준점으로 잡아야
-  // header/mobile-nav 순서가 뒤집히지 않는다.
-  const referenceNode = document.body.firstChild;
-  while (wrapper.firstChild) {
-    document.body.insertBefore(wrapper.firstChild, referenceNode);
+
+  const placeholder = document.querySelector('.site-header-placeholder');
+  if (placeholder) {
+    // 이미 자리를 잡아둔 placeholder를 실제 헤더로 교체 (레이아웃 흔들림 없음)
+    while (wrapper.firstChild) {
+      placeholder.parentNode.insertBefore(wrapper.firstChild, placeholder);
+    }
+    placeholder.remove();
+  } else {
+    // placeholder가 없는 페이지를 위한 안전장치 (기존 방식)
+    const referenceNode = document.body.firstChild;
+    while (wrapper.firstChild) {
+      document.body.insertBefore(wrapper.firstChild, referenceNode);
+    }
   }
 
   const hamburgerBtn = document.getElementById('lazyHamburgerBtn');

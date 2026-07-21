@@ -276,6 +276,11 @@ details.readme .body b{color:var(--primary-dark);}
 .repo-link:hover{text-decoration:underline;}
 
 /* ---------- 사이트 공통 헤더: 글래스모피즘 스티키 (좌측 브랜드 + 우측 탭) ---------- */
+/* JS가 실제 헤더를 넣기 전, 이 자리만큼 미리 공간을 잡아둬서 삽입 시 화면이
+   덜컹거리거나 "헤더 없는 화면"이 잠깐 스치는 걸 방지함 (header.js가 이 자리를
+   실제 헤더로 교체함) */
+.site-header-placeholder{height:60px;}
+
 .site-header{
   position:sticky; top:0; z-index:50;
   display:flex; align-items:center; justify-content:space-between;
