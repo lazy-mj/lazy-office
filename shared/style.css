@@ -68,11 +68,14 @@ body{
 }
 .mascot-img{height:104px; width:auto; flex-shrink:0;}
 
-/* ---------- 개별 업무 도구용 히어로 (허브 홈 전용 .hero와는 별개 이름) ---------- */
+/* ---------- 개별 업무 도구용 히어로 (허브 홈 전용 .hero와는 별개 이름) ----------
+   .shell(max-width 컨테이너) 밖, site-header-placeholder 바로 다음에 위치해야
+   허브 홈처럼 화면 전체 폭으로 꽉 차게 보입니다. */
 .tool-hero{
   position:relative; overflow:hidden; text-align:center;
-  padding:56px 24px 44px; margin:0 -20px 28px;
+  padding:56px 24px 44px;
   background:linear-gradient(180deg, #eef4fb 0%, var(--bg) 100%);
+  border-bottom:1px solid var(--border);
 }
 .tool-hero::before, .tool-hero::after{content:''; position:absolute; border-radius:50%; filter:blur(55px); z-index:0; pointer-events:none;}
 .tool-hero::before{width:260px; height:260px; background:#0071e3; opacity:.24; top:-90px; left:calc(50% - 220px);}
@@ -323,10 +326,17 @@ details.readme .body{
 details.readme .body ul{margin:10px 0 0; padding-left:20px;}
 details.readme .body li{margin-bottom:8px;}
 details.readme .body b{color:var(--primary-dark);}
-.foot-note{font-size:12px; color:var(--ink-soft); margin-top:20px; border-top:1px dashed var(--border); padding-top:14px;}
-.repo-link{display:inline-flex; align-items:center; gap:6px; margin-top:8px; color:var(--primary); font-weight:700; text-decoration:none;}
+.foot-note{font-size:12px; color:var(--ink-soft); margin-top:20px; border-top:1px dashed var(--border); padding-top:14px; text-align:center; line-height:1.7;}
+.repo-link{display:inline-flex; align-items:center; gap:6px; color:var(--primary); font-weight:700; text-decoration:none;}
 .repo-link:hover{text-decoration:underline;}
 .repo-link .icon-svg{width:15px; height:15px; flex-shrink:0;}
+
+/* 개별 도구 푸터 하단 줄: 문의처 + 저장소 링크를 허브 푸터처럼 가운데 정렬, 병렬 배치 */
+.foot-links{display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:10px; margin-top:12px; font-size:13px;}
+.foot-links .divider{width:3px; height:3px; border-radius:50%; background:var(--ink-soft); opacity:.5; flex-shrink:0;}
+.foot-links .repo-link{margin-top:0;}
+.foot-contact{display:inline-flex; align-items:center; gap:6px; color:var(--ink-soft); font-weight:600;}
+.foot-contact .icon-svg{width:14px; height:14px; flex-shrink:0;}
 
 /* ---------- 사이트 공통 헤더: 글래스모피즘 스티키 (좌측 브랜드 + 우측 탭) ---------- */
 /* JS가 실제 헤더를 넣기 전, 이 자리만큼 미리 공간을 잡아둬서 삽입 시 화면이
