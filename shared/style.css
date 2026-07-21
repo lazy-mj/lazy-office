@@ -274,18 +274,79 @@ details.readme .body b{color:var(--primary-dark);}
 .repo-link{display:inline-block; margin-top:8px; color:var(--primary); font-weight:700; text-decoration:none;}
 .repo-link:hover{text-decoration:underline;}
 
-/* ---------- 플랫폼 홈(업무 선택) 전용 카드 ---------- */
-.module-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:16px;}
-.module-card{
-  background:var(--card); border:1px solid var(--border); border-radius:14px; padding:22px;
-  text-decoration:none; color:var(--ink); display:block; transition:box-shadow .15s, transform .1s;
+/* ---------- 플랫폼 홈(업무 선택) 전용: 히어로 ---------- */
+.icon-svg{stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; display:block;}
+
+.hero{
+  position:relative; overflow:hidden;
+  background:linear-gradient(180deg, #eef4fb 0%, var(--bg) 100%);
+  border-bottom:1px solid var(--border);
+  padding:88px 24px 104px; text-align:center;
 }
-.module-card:hover{box-shadow:0 6px 18px rgba(16,24,40,0.08); transform:translateY(-2px);}
-.module-card .icon{font-size:28px; margin-bottom:10px; display:block;}
-.module-card h3{font-size:16px; margin:0 0 6px;}
-.module-card p{font-size:13px; color:var(--ink-soft); margin:0;}
-.module-card.disabled{opacity:.5; pointer-events:none;}
-.module-card .soon{font-size:11px; color:var(--ink-soft); background:#EEF1F5; padding:2px 8px; border-radius:10px; margin-left:6px;}
+.hero::before, .hero::after{content:''; position:absolute; border-radius:50%; filter:blur(60px); z-index:0;}
+.hero::before{width:300px; height:300px; background:#0071e3; opacity:.22; top:-90px; left:calc(50% - 200px);}
+.hero::after{width:240px; height:240px; background:#B15A3D; opacity:.12; top:-30px; left:calc(50% + 60px);}
+.hero-inner{position:relative; z-index:1;}
+
+/* Clash Display(Fontshare) 워드마크 - 로드 실패 시 자동으로 다음 폰트로 폴백됨 */
+.wordmark{
+  font-family:"Clash Display", -apple-system, "Apple SD Gothic Neo", "Pretendard", sans-serif;
+  font-size:clamp(42px, 7vw, 68px); font-weight:600; letter-spacing:-0.035em; margin:0 0 14px; line-height:1.0;
+}
+.wordmark .lazy{color:var(--ink-soft); font-weight:500;}
+.wordmark .office{color:var(--primary); font-weight:700;}
+.hero p{font-size:15.5px; color:var(--ink-soft); margin:0 auto 20px; max-width:440px;}
+
+/* .hero 안에서만 적용되는 유리질감 lock-note (다른 페이지의 기본 .lock-note는 그대로 유지됨) */
+.hero .lock-note{
+  display:inline-flex; align-items:center; gap:6px; font-size:12.5px; color:var(--primary); font-weight:600; margin:0;
+  background:rgba(255,255,255,0.55); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,0.7); padding:7px 16px; border-radius:999px;
+  box-shadow:0 4px 14px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.7);
+}
+.hero .lock-note .icon-svg{width:14px; height:14px; flex-shrink:0;}
+
+/* ---------- 플랫폼 홈 전용: 카드 ---------- */
+.content{max-width:900px; margin:-56px auto 0; padding:0 24px 60px; position:relative; z-index:2;}
+.section-label{font-size:12.5px; font-weight:700; color:var(--ink-soft); text-transform:uppercase; letter-spacing:0.05em; margin:0 0 14px 4px;}
+.module-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:16px;}
+
+.module-card{
+  background:var(--card); border:1px solid var(--border); border-radius:18px; padding:22px;
+  box-shadow:0 1px 3px rgba(0,0,0,0.04);
+  text-decoration:none; color:var(--ink); display:flex; flex-direction:column; gap:8px;
+  transition:box-shadow .18s ease, transform .15s ease, border-color .15s ease;
+  cursor:pointer;
+}
+.module-card:hover{box-shadow:0 14px 30px rgba(0,91,172,0.14); transform:translateY(-3px); border-color:var(--primary);}
+
+.module-card .icon{
+  width:44px; height:44px; border-radius:12px; margin-bottom:2px;
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.module-card .icon .icon-svg{width:22px; height:22px;}
+.module-card.c-navy .icon{background:#EAEEF4; color:#3E5170;}
+.module-card.c-terracotta .icon{background:#FBEEE8; color:#B15A3D;}
+
+.module-card h3{font-size:15.5px; margin:0; font-weight:700;}
+.module-card p{font-size:12.5px; color:var(--ink-soft); margin:0;}
+
+/* "바로가기" 영역: 호버 전엔 높이 자체를 0으로 접어서 카드 하단에 빈 공간이 남지 않게 함 */
+.cta-wrap{display:grid; grid-template-rows:0fr; transition:grid-template-rows .18s ease;}
+.cta-wrap > *{overflow:hidden; min-height:0;}
+.module-card:hover .cta-wrap{grid-template-rows:1fr;}
+.module-card .cta{font-size:12.5px; font-weight:700; color:var(--primary); display:flex; align-items:center; gap:4px; opacity:0; transition:opacity .15s ease .03s;}
+.module-card:hover .cta{opacity:1;}
+.module-card .cta .icon-svg{width:13px; height:13px;}
+
+/* "다음 자동화 제안" 카드 - 회색/하늘색 톤, 클릭 불가 */
+.module-card.suggest{border:1.5px dashed #cfd9e0; background:linear-gradient(180deg, #f4f8fb 0%, #eef2f5 100%); cursor:default;}
+.module-card.suggest:hover{transform:none; box-shadow:none; border-color:#b9c7d1;}
+.module-card.suggest .icon{background:#fff; color:#5B6B7C;}
+.module-card.suggest h3{color:#4a5a68;}
+.module-card.suggest p{color:#7c8b98;}
+
+.content .foot-note{margin-top:32px;}
 
 /* =========================================================================
    반응형 (모바일) — 이 블록만 고치면 모든 업무 화면에 동일하게 적용됩니다.
@@ -306,6 +367,8 @@ details.readme .body b{color:var(--primary-dark);}
   .stat-grid{grid-template-columns:repeat(2,1fr);}
   table{min-width:520px;} /* 표는 가로 스크롤 유지 */
   .module-grid{grid-template-columns:1fr;}
+  .hero{padding:56px 20px 76px;}
+  .content{margin-top:-40px;}
 }
 @media (max-width: 420px){
   .stat-grid{grid-template-columns:1fr;}
