@@ -14,6 +14,8 @@
   --danger-bg:#FDECEC;
   --success:#2E7D32;
   --success-bg:#E9F5EA;
+  --teal:#0F6E56;
+  --teal-bg:#E1F5EE;
   --ink:#1D2733;
   --ink-soft:#5B6B7C;
   --mono:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
@@ -121,7 +123,7 @@ body{
 
 /* ---------- Stepper (미니멀 라인 — 박스/테두리 없이 원형 뱃지+라벨만) ---------- */
 .stepper{
-  list-style:none; display:flex; align-items:center; gap:0; padding:4px 0; margin:0 0 24px; flex-wrap:wrap;
+  list-style:none; display:flex; align-items:center; justify-content:center; gap:0; padding:4px 0; margin:0 0 24px; flex-wrap:wrap;
 }
 .stepper .step{display:flex; align-items:center; gap:9px; color:var(--ink-soft); font-weight:600; font-size:13.5px; padding:4px 2px;}
 .stepper .dot{
@@ -134,10 +136,10 @@ body{
   color:#fff; box-shadow:0 0 0 5px rgba(79,95,234,0.12), 0 4px 10px rgba(79,95,234,0.35);
 }
 .stepper .step.current .label{color:var(--primary); font-weight:800;}
-.stepper .step.done .dot{background:var(--success); color:#fff;}
-.stepper .step.done .label{color:var(--success);}
+.stepper .step.done .dot{background:var(--teal); color:#fff;}
+.stepper .step.done .label{color:var(--teal);}
 .stepper .connector{width:34px; height:1.5px; background:var(--border); margin:0 12px; flex-shrink:0;}
-.stepper .connector.done{background:var(--success);}
+.stepper .connector.done{background:var(--teal);}
 .stepper .arrow{color:var(--border); font-size:16px;}
 
 /* ---------- Card ---------- */
@@ -241,7 +243,7 @@ body{
   background:rgba(255,255,255,0.85); backdrop-filter:blur(12px) saturate(160%); -webkit-backdrop-filter:blur(12px) saturate(160%);
   color:var(--ink); font-size:12px; font-weight:600; line-height:1.5;
   padding:9px 13px; border-radius:10px; width:max-content; max-width:220px; text-align:center;
-  white-space:normal; border:1px solid rgba(255,255,255,0.7);
+  white-space:pre-line; border:1px solid rgba(255,255,255,0.7);
   opacity:0; pointer-events:none; z-index:60;
   transition:opacity .18s ease, transform .18s ease;
   box-shadow:0 12px 26px rgba(20,30,60,0.16), 0 3px 8px rgba(20,30,60,0.08), inset 0 1px 0 rgba(255,255,255,0.8);
@@ -267,12 +269,18 @@ body{
   background:var(--card); border-radius:14px; padding:26px;
   width:100%; max-width:380px; box-shadow:0 20px 50px rgba(16,24,40,0.25);
   transform:translateY(10px) scale(.98); transition:transform .18s ease;
+  text-align:center;
 }
 .modal-overlay.show .modal-box{transform:translateY(0) scale(1);}
 .modal-title{font-size:17px; font-weight:800; color:var(--ink); margin-bottom:8px;}
 .modal-message{font-size:13.5px; color:var(--ink-soft); line-height:1.6; margin-bottom:22px;}
-.modal-actions{display:flex; justify-content:flex-end; gap:10px;}
-.modal-actions .btn{padding:10px 18px; font-size:13.5px;}
+.modal-message ul{text-align:left; margin:0; padding-left:18px;}
+.modal-message li{margin-bottom:8px;}
+.modal-message li:last-child{margin-bottom:0;}
+.modal-icon{width:38px; height:38px; border-radius:50%; margin:0 auto 12px; display:flex; align-items:center; justify-content:center;}
+.modal-icon-warning{background:var(--danger-bg); color:var(--danger);}
+.modal-actions{display:flex; justify-content:center; gap:10px;}
+.modal-actions .btn{padding:10px 18px; font-size:13.5px; flex:1;}
 
 /* ---------- Dropzone ---------- */
 .dropzone{
@@ -305,16 +313,16 @@ input[type=text]{
 .output-fields{display:flex; gap:16px; flex-wrap:wrap;}
 
 /* ---------- Progress steps (버튼처럼 보이지 않는 상태 표시) ---------- */
-.progress{list-style:none; display:flex; padding:18px 4px 4px; margin:16px 0 32px;}
+.progress{list-style:none; display:flex; justify-content:center; padding:18px 4px 4px; margin:16px 0 32px;}
 .progress li{
-  flex:1; display:flex; flex-direction:column; align-items:center; gap:7px;
+  flex:0 0 110px; display:flex; flex-direction:column; align-items:center; gap:7px;
   font-size:12px; font-weight:600; color:var(--ink-soft); position:relative;
 }
 .progress li:not(:last-child)::after{
-  content:''; position:absolute; top:11px; left:calc(50% + 16px); width:calc(100% - 32px);
+  content:''; position:absolute; top:11px; left:calc(50% + 16px); width:calc(110px - 32px);
   height:2px; background:var(--border); z-index:0; transition:background .3s ease;
 }
-.progress li.complete:not(:last-child)::after{background:var(--success);}
+.progress li.complete:not(:last-child)::after{background:var(--teal);}
 .progress .dot{
   width:22px; height:22px; border-radius:50%; flex-shrink:0;
   background:#fff; border:2px solid var(--border); color:var(--ink-soft);
@@ -326,11 +334,11 @@ input[type=text]{
   animation:progress-pulse 1.4s ease-in-out infinite;
 }
 .progress li.complete .dot{
-  border-color:var(--success); background:var(--success); color:#fff; font-size:0;
+  border-color:var(--teal); background:var(--teal); color:#fff; font-size:0;
 }
 .progress li.complete .dot::after{content:'✓'; font-size:12px;}
 .progress li.active .label{color:var(--primary); font-weight:800;}
-.progress li.complete .label{color:var(--success);}
+.progress li.complete .label{color:var(--teal);}
 @keyframes progress-pulse{
   0%,100%{box-shadow:0 0 0 0 rgba(0,91,172,0.32);}
   50%{box-shadow:0 0 0 6px rgba(0,91,172,0);}
@@ -372,7 +380,7 @@ tr.row-mismatch td{background:var(--danger-bg);}
 
 /* ---------- Status / error banners ---------- */
 .status{font-size:13px; padding:10px 14px; border-radius:8px; margin:0 0 14px; font-weight:600;}
-.status.ok{background:var(--success-bg); color:var(--success);}
+.status.ok{background:var(--teal-bg); color:var(--teal);}
 .status.warn{background:var(--danger-bg); color:var(--danger);}
 .error-banner{
   background:var(--danger-bg); border:1px solid #f5c6c6; color:#8a2323; border-radius:10px;
@@ -405,25 +413,6 @@ tr.row-mismatch td{background:var(--danger-bg);}
 .toast.error .dot-icon{background:linear-gradient(135deg,#F97373,#DC3D3D);}
 
 /* ---------- Readme / footer ---------- */
-details.readme{
-  margin:8px 0 18px; background:var(--card); border:1px solid var(--border);
-  border-radius:10px; overflow:hidden;
-}
-details.readme summary{
-  cursor:pointer; padding:12px 18px; font-weight:600; color:var(--primary-dark);
-  list-style:none; display:flex; align-items:center; gap:8px; user-select:none;
-}
-details.readme summary::-webkit-details-marker{display:none;}
-details.readme summary::before{
-  content:"▶"; font-size:11px; color:var(--primary); transition:transform .15s;
-}
-details.readme[open] summary::before{transform:rotate(90deg);}
-details.readme .body{
-  padding:4px 18px 18px; font-size:13.5px; color:var(--ink); border-top:1px solid var(--border);
-}
-details.readme .body ul{margin:10px 0 0; padding-left:20px;}
-details.readme .body li{margin-bottom:8px;}
-details.readme .body b{color:var(--primary-dark);}
 .foot-note{font-size:12px; color:var(--ink-soft); margin-top:20px; border-top:1px dashed var(--border); padding-top:14px; text-align:center; line-height:1.7;}
 .repo-link{display:inline-flex; align-items:center; gap:6px; color:var(--primary); font-weight:700; text-decoration:none;}
 .repo-link:hover{text-decoration:underline;}

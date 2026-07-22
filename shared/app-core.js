@@ -177,8 +177,11 @@
     copyViaFallback(text) ? doneAsText() : fail();
   }
 
-  /* ---------- Dialog : 커스텀 확인 모달 (native confirm() 대체) ---------- */
-  function confirmDialog({title='', message='', confirmText='확인', cancelText='취소', danger=false} = {}){
+  /* ---------- Dialog : 커스텀 확인 모달 (native confirm() 대체) ----------
+     neutralText를 주면 3버튼(확인/취소성 선택지 2개 + 진짜 취소) 모드가 되고,
+     이때 바깥 클릭/ESC는 neutralText(아무 것도 안 함, null 반환)로 연결됩니다.
+     neutralText가 없으면 기존과 동일하게 2버튼 + 바깥클릭=취소(false)로 동작합니다. */
+  function confirmDialog({title='', message='', confirmText='확인', cancelText='취소', neutralText=null, danger=false} = {}){
     return new Promise((resolve) => {
       const overlay = el('div', 'modal-overlay');
       const box = el('div', 'modal-box');
@@ -187,29 +190,76 @@
       if(title) box.appendChild(el('div', 'modal-title', title));
       box.appendChild(el('div', 'modal-message', message));
       const actions = el('div', 'modal-actions');
-      const cancelBtn = el('button', 'btn btn-outline', cancelText);
       const confirmBtn = el('button', 'btn ' + (danger ? 'btn-danger' : 'btn-primary'), confirmText);
-      cancelBtn.type = 'button';
+      const cancelBtn = el('button', 'btn btn-outline', cancelText);
       confirmBtn.type = 'button';
-      actions.appendChild(cancelBtn);
+      cancelBtn.type = 'button';
       actions.appendChild(confirmBtn);
+      actions.appendChild(cancelBtn);
+      let neutralBtn = null;
+      if(neutralText){
+        neutralBtn = el('button', 'btn btn-outline', neutralText);
+        neutralBtn.type = 'button';
+        actions.appendChild(neutralBtn);
+      }
       box.appendChild(actions);
       overlay.appendChild(box);
       document.body.appendChild(overlay);
       requestAnimationFrame(() => overlay.classList.add('show'));
 
+      const dismissResult = neutralText ? null : false;
       function close(result){
         overlay.classList.remove('show');
         setTimeout(() => overlay.remove(), 160);
         document.removeEventListener('keydown', onKey);
         resolve(result);
       }
-      function onKey(e){ if(e.key === 'Escape') close(false); }
-      cancelBtn.addEventListener('click', () => close(false));
+      function onKey(e){ if(e.key === 'Escape') close(dismissResult); }
       confirmBtn.addEventListener('click', () => close(true));
-      overlay.addEventListener('click', (e) => { if(e.target === overlay) close(false); });
+      cancelBtn.addEventListener('click', () => close(false));
+      if(neutralBtn) neutralBtn.addEventListener('click', () => close(null));
+      overlay.addEventListener('click', (e) => { if(e.target === overlay) close(dismissResult); });
       document.addEventListener('keydown', onKey);
       confirmBtn.focus();
+    });
+  }
+
+  /* ---------- Dialog : 알림/사용법 모달 (버튼 1개, native alert() 대체) ---------- */
+  function infoDialog({title='', bodyHtml='', closeText='닫기', icon=null} = {}){
+    return new Promise((resolve) => {
+      const overlay = el('div', 'modal-overlay');
+      const box = el('div', 'modal-box');
+      box.setAttribute('role', 'dialog');
+      box.setAttribute('aria-modal', 'true');
+      if(icon === 'warning'){
+        const iconWrap = el('div', 'modal-icon modal-icon-warning');
+        iconWrap.innerHTML = '<svg class="icon-svg" width="20" height="20" viewBox="0 0 24 24"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/></svg>';
+        box.appendChild(iconWrap);
+      }
+      if(title) box.appendChild(el('div', 'modal-title', title));
+      const body = el('div', 'modal-message');
+      body.innerHTML = bodyHtml;
+      box.appendChild(body);
+      const actions = el('div', 'modal-actions');
+      const closeBtn = el('button', 'btn btn-primary', closeText);
+      closeBtn.type = 'button';
+      actions.appendChild(closeBtn);
+      box.appendChild(actions);
+      overlay.appendChild(box);
+      document.body.appendChild(overlay);
+      requestAnimationFrame(() => overlay.classList.add('show'));
+
+      function close(){
+        overlay.classList.remove('show');
+        setTimeout(() => overlay.remove(), 160);
+        document.removeEventListener('keydown', onKey);
+        resolve();
+      }
+      function onKey(e){ if(e.key === 'Escape') close(); }
+      closeBtn.addEventListener('click', close);
+      overlay.addEventListener('click', (e) => { if(e.target === overlay) close(); });
+      document.addEventListener('keydown', onKey);
+      closeBtn.focus();
     });
   }
 
@@ -217,7 +267,7 @@
     el,
     toast: { show: showToast },
     error: { show: showError },
-    dialog: { confirm: confirmDialog },
+    dialog: { confirm: confirmDialog, info: infoDialog },
     stepper: { set: setStep },
     progress: { set: setProgress },
     storage: Storage,
