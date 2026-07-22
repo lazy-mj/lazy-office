@@ -72,14 +72,21 @@ body{
    .shell(max-width 컨테이너) 밖, site-header-placeholder 바로 다음에 위치해야
    허브 홈처럼 화면 전체 폭으로 꽉 차게 보입니다. */
 .tool-hero{
-  position:relative; overflow:hidden; text-align:center;
+  position:relative; overflow:visible; text-align:center;
   padding:56px 24px 44px;
-  background:linear-gradient(180deg, #eef4fb 0%, var(--bg) 100%);
-  border-bottom:1px solid var(--border);
+  background:#fff;
+  border-bottom:none;
 }
-.tool-hero::before, .tool-hero::after{content:''; position:absolute; border-radius:50%; filter:blur(55px); z-index:0; pointer-events:none;}
-.tool-hero::before{width:260px; height:260px; background:#0071e3; opacity:.24; top:-90px; left:calc(50% - 220px);}
-.tool-hero::after{width:220px; height:220px; background:var(--office-blue); opacity:.14; top:-60px; left:calc(50% + 80px);}
+.tool-hero::before{
+  content:''; position:absolute; left:50%; top:-30px; transform:translateX(-50%);
+  width:360px; height:360px; border-radius:50%; z-index:0; pointer-events:none;
+  filter:blur(55px); opacity:.45;
+  background:
+    radial-gradient(circle at 30% 35%, #4F7FFF 0%, transparent 30%),
+    radial-gradient(circle at 65% 30%, #8B5CF6 0%, transparent 30%),
+    radial-gradient(circle at 60% 65%, #EA5FD1 0%, transparent 30%),
+    radial-gradient(circle at 35% 65%, #4FC3F7 0%, transparent 30%);
+}
 .tool-hero-inner{position:relative; z-index:1;}
 .tool-icon-badge{
   position:relative; overflow:hidden; width:58px; height:58px; border-radius:16px; margin:0 auto 18px;
@@ -93,11 +100,15 @@ body{
 .tool-hero-icon{width:64px; height:auto; margin:0 auto 16px; display:block; filter:drop-shadow(0 8px 16px rgba(11,47,92,0.22));}
 .tool-hero h1{
   font-family:"Clash Display", -apple-system, "Apple SD Gothic Neo", "Pretendard", sans-serif;
-  font-size:32px; font-weight:700; letter-spacing:-0.02em; margin:0 0 10px; color:var(--ink);
+  font-size:32px; font-weight:700; letter-spacing:-0.02em; margin:0 0 10px; color:#000;
 }
-.tool-tagline{font-size:14.5px; color:var(--ink-soft); margin:0 0 18px;}
+.tool-tagline{font-size:14.5px; color:#3D4A58; margin:0 0 18px;}
 /* .tool-hero 안에서만 쓰는 유리질감 lock-note (기본 .lock-note는 그대로 유지) */
-.tool-hero .lock-note{margin:0;}
+.tool-hero .lock-note{
+  margin:0; background:rgba(255,255,255,0.28); border-color:rgba(255,255,255,0.55);
+  color:#4F5FEA; padding:5px 12px;
+}
+.tool-hero .lock-note .icon-svg{color:#4F5FEA;}
 
 /* ---------- Platform Nav (공통, 업무 전환용) ---------- */
 .platform-nav{display:flex; align-items:center; gap:6px; margin:0 0 18px; flex-wrap:wrap;}
@@ -444,6 +455,8 @@ details.readme .body b{color:var(--primary-dark);}
 
 /* 홈 허브 화면 전용: 히어로가 풀 화이트 배경을 쓰므로 body도 맞춤 (다른 도구 페이지엔 영향 없음) */
 body.home-page{background:#fff;}
+/* 개별 도구 페이지(전화요금/예산검증)도 tool-hero가 풀 화이트 배경을 쓰므로 동일하게 맞춤 */
+body.tool-page{background:#fff;}
 
 /* ---------- 플랫폼 홈 전용: 카드 ---------- */
 .content{max-width:900px; margin:-56px auto 0; padding:0 24px 60px; position:relative; z-index:2; animation:page-reveal 1s cubic-bezier(.22,.9,.35,1) .12s both;}
