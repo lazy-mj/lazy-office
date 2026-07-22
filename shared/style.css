@@ -90,6 +90,7 @@ body{
   box-shadow:0 8px 22px rgba(11,47,92,0.18), inset 0 1px 0 rgba(255,255,255,0.85), inset 0 -6px 12px rgba(11,47,92,0.08);
 }
 .tool-icon-badge img{width:30px; height:30px; object-fit:contain;}
+.tool-hero-icon{width:64px; height:auto; margin:0 auto 16px; display:block; filter:drop-shadow(0 8px 16px rgba(11,47,92,0.22));}
 .tool-hero h1{
   font-family:"Clash Display", -apple-system, "Apple SD Gothic Neo", "Pretendard", sans-serif;
   font-size:32px; font-weight:700; letter-spacing:-0.02em; margin:0 0 10px; color:var(--ink);
