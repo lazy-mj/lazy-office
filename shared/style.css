@@ -4,9 +4,9 @@
    동일하게 반영됩니다. 업무별 스타일은 modules/<업무>/*.css 에만 작성하세요.
    ========================================================================= */
 :root{
-  --primary:#005BAC;
-  --primary-dark:#004488;
-  --secondary:#EAF4FD;
+  --primary:#4F5FEA;
+  --primary-dark:#3A46C4;
+  --secondary:#EEF0FE;
   --bg:#F7F9FC;
   --card:#FFFFFF;
   --border:#D9E2EC;
@@ -122,7 +122,7 @@ body{
 /* ---------- Stepper ---------- */
 .stepper{
   list-style:none; display:flex; align-items:center; gap:6px; padding:16px 18px; margin:0 0 24px;
-  background:var(--card); border:1px solid var(--border); border-radius:12px; flex-wrap:wrap;
+  background:var(--card); border:1px solid #D3D9E3; border-radius:12px; flex-wrap:wrap;
 }
 .stepper .step{display:flex; align-items:center; gap:8px; color:var(--ink-soft); font-weight:600; font-size:13.5px;}
 .stepper .dot{
@@ -136,8 +136,8 @@ body{
 
 /* ---------- Card ---------- */
 .card{
-  background:var(--card); border:1px solid var(--border); border-radius:18px;
-  padding:26px; margin-bottom:22px; box-shadow:0 1px 3px rgba(0,0,0,0.04);
+  background:var(--card); border:1px solid #D3D9E3; border-radius:18px;
+  padding:26px; margin-bottom:22px; box-shadow:0 6px 18px rgba(20,30,60,0.07), 0 1px 4px rgba(20,30,60,0.04);
 }
 .card-warn{border-left:4px solid var(--danger);}
 .card-head{margin-bottom:20px;}
