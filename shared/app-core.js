@@ -180,8 +180,10 @@
   /* ---------- Dialog : 커스텀 확인 모달 (native confirm() 대체) ----------
      neutralText를 주면 3버튼(확인/취소성 선택지 2개 + 진짜 취소) 모드가 되고,
      이때 바깥 클릭/ESC는 neutralText(아무 것도 안 함, null 반환)로 연결됩니다.
-     neutralText가 없으면 기존과 동일하게 2버튼 + 바깥클릭=취소(false)로 동작합니다. */
-  function confirmDialog({title='', message='', confirmText='확인', cancelText='취소', neutralText=null, danger=false} = {}){
+     neutralText가 없으면 기존과 동일하게 2버튼 + 바깥클릭=취소(false)로 동작합니다.
+     order로 버튼 표시 순서(DOM 순서)를, primaryButton으로 어떤 버튼을 강조색(파란/빨강)으로
+     보여줄지 지정할 수 있습니다 (기본값은 기존과 동일: confirm이 강조, confirm-cancel-neutral 순). */
+  function confirmDialog({title='', message='', confirmText='확인', cancelText='취소', neutralText=null, danger=false, order=['confirm','cancel','neutral'], primaryButton='confirm'} = {}){
     return new Promise((resolve) => {
       const overlay = el('div', 'modal-overlay');
       const box = el('div', 'modal-box');
@@ -190,18 +192,18 @@
       if(title) box.appendChild(el('div', 'modal-title', title));
       box.appendChild(el('div', 'modal-message', message));
       const actions = el('div', neutralText ? 'modal-actions stacked' : 'modal-actions');
-      const confirmBtn = el('button', 'btn ' + (danger ? 'btn-danger' : 'btn-primary'), confirmText);
-      const cancelBtn = el('button', 'btn btn-outline', cancelText);
+      const styleFor = (key) => key === primaryButton ? (danger ? 'btn-danger' : 'btn-primary') : 'btn-outline';
+      const confirmBtn = el('button', 'btn ' + styleFor('confirm'), confirmText);
+      const cancelBtn = el('button', 'btn ' + styleFor('cancel'), cancelText);
       confirmBtn.type = 'button';
       cancelBtn.type = 'button';
-      actions.appendChild(confirmBtn);
-      actions.appendChild(cancelBtn);
       let neutralBtn = null;
       if(neutralText){
-        neutralBtn = el('button', 'btn btn-outline', neutralText);
+        neutralBtn = el('button', 'btn ' + styleFor('neutral'), neutralText);
         neutralBtn.type = 'button';
-        actions.appendChild(neutralBtn);
       }
+      const btnByKey = {confirm:confirmBtn, cancel:cancelBtn, neutral:neutralBtn};
+      order.forEach(key => { if(btnByKey[key]) actions.appendChild(btnByKey[key]); });
       box.appendChild(actions);
       overlay.appendChild(box);
       document.body.appendChild(overlay);
