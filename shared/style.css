@@ -357,8 +357,8 @@ details.readme .body b{color:var(--primary-dark);}
   font-family:"Clash Display", -apple-system, "Apple SD Gothic Neo", "Pretendard", sans-serif;
   font-size:19px; letter-spacing:-0.02em; text-decoration:none; display:flex;
 }
-.site-header .brand .lazy{color:var(--ink); font-weight:600;}
-.site-header .brand .office{color:var(--office-blue); font-weight:700;}
+.site-header .brand .lazy{color:#000; font-weight:600;}
+.site-header .brand .office{color:#000; font-weight:700;}
 
 .site-header nav.desktop-nav{display:flex; gap:2px;}
 .site-header nav a{
@@ -390,14 +390,21 @@ details.readme .body b{color:var(--primary-dark);}
 .icon-svg{stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; display:block;}
 
 .hero{
-  position:relative; overflow:hidden;
-  background:linear-gradient(180deg, #eef4fb 0%, var(--bg) 100%);
-  border-bottom:1px solid var(--border);
+  position:relative; overflow:visible;
+  background:#fff;
+  border-bottom:none;
   padding:88px 24px 104px; text-align:center;
 }
-.hero::before, .hero::after{content:''; position:absolute; border-radius:50%; filter:blur(60px); z-index:0;}
-.hero::before{width:300px; height:300px; background:#0071e3; opacity:.22; top:-90px; left:calc(50% - 200px);}
-.hero::after{width:240px; height:240px; background:#B15A3D; opacity:.12; top:-30px; left:calc(50% + 60px);}
+.hero::before{
+  content:""; position:absolute; left:50%; top:-40px; transform:translateX(-50%);
+  width:460px; height:460px; border-radius:50%; z-index:0; display:block;
+  filter:blur(70px); opacity:.45;
+  background:
+    radial-gradient(circle at 30% 35%, #4F7FFF 0%, transparent 30%),
+    radial-gradient(circle at 65% 30%, #8B5CF6 0%, transparent 30%),
+    radial-gradient(circle at 60% 65%, #EA5FD1 0%, transparent 30%),
+    radial-gradient(circle at 35% 65%, #4FC3F7 0%, transparent 30%);
+}
 .hero-inner{position:relative; z-index:1; animation:page-reveal .9s cubic-bezier(.22,.9,.35,1) both;}
 
 @keyframes page-reveal{
@@ -409,18 +416,18 @@ details.readme .body b{color:var(--primary-dark);}
 /* Clash Display(Fontshare) 워드마크 - 로드 실패 시 자동으로 다음 폰트로 폴백됨 */
 .wordmark{
   font-family:"Clash Display", -apple-system, "Apple SD Gothic Neo", "Pretendard", sans-serif;
-  font-size:clamp(42px, 7vw, 68px); font-weight:600; letter-spacing:-0.035em; margin:0 0 14px; line-height:1.0;
+  font-size:clamp(42px, 7vw, 68px); font-weight:600; letter-spacing:-0.035em; margin:0 0 34px; line-height:1.0;
 }
-.wordmark .lazy{color:var(--ink); font-weight:600;}
-.wordmark .office{color:var(--office-blue); font-weight:700;}
-.hero p{font-size:15.5px; color:var(--ink-soft); margin:0 auto 20px; max-width:440px;}
+.wordmark .lazy{color:#000; font-weight:600;}
+.wordmark .office{color:#000; font-weight:700;}
+.hero p{font-size:15.5px; color:#3D4A58; margin:0 auto 20px; max-width:440px;}
 
 /* .hero 안에서만 적용되는 유리질감 lock-note (다른 페이지의 기본 .lock-note는 그대로 유지됨) */
 .hero .lock-note{
   position:relative; overflow:hidden;
-  display:inline-flex; align-items:center; gap:6px; font-size:12.5px; color:var(--primary); font-weight:600; margin:0;
-  background:rgba(255,255,255,0.55); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
-  border:1px solid rgba(255,255,255,0.7); padding:7px 16px; border-radius:999px;
+  display:inline-flex; align-items:center; gap:6px; font-size:12.5px; color:#4F5FEA; font-weight:600; margin:0;
+  background:rgba(255,255,255,0.28); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,0.55); padding:5px 12px; border-radius:999px;
   box-shadow:0 4px 14px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.7);
 }
 .hero .lock-note::after{
@@ -433,43 +440,46 @@ details.readme .body b{color:var(--primary-dark);}
   55%{left:160%;}
   100%{left:160%;}
 }
-.hero .lock-note .icon-svg{width:14px; height:14px; flex-shrink:0; position:relative; z-index:1;}
+.hero .lock-note .icon-svg{width:14px; height:14px; flex-shrink:0; position:relative; z-index:1; color:#4F5FEA;}
+
+/* 홈 허브 화면 전용: 히어로가 풀 화이트 배경을 쓰므로 body도 맞춤 (다른 도구 페이지엔 영향 없음) */
+body.home-page{background:#fff;}
 
 /* ---------- 플랫폼 홈 전용: 카드 ---------- */
 .content{max-width:900px; margin:-56px auto 0; padding:0 24px 60px; position:relative; z-index:2; animation:page-reveal 1s cubic-bezier(.22,.9,.35,1) .12s both;}
 .section-label{font-size:12.5px; font-weight:700; color:var(--ink-soft); text-transform:uppercase; letter-spacing:0.05em; margin:0 0 14px 4px;}
-.module-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:16px;}
+.module-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:20px;}
 
 .module-card{
-  background:var(--card); border:1px solid var(--border); border-radius:18px; padding:22px;
-  box-shadow:0 1px 3px rgba(0,0,0,0.04);
+  background:var(--card); border:1px solid #D3D9E3; border-radius:18px; padding:22px;
+  box-shadow:0 10px 24px rgba(20,30,60,0.10), 0 2px 8px rgba(20,30,60,0.06);
   text-decoration:none; color:var(--ink); display:flex; flex-direction:column; gap:8px;
   transition:box-shadow .18s ease, transform .15s ease, border-color .15s ease;
   cursor:pointer;
 }
-.module-card:hover{box-shadow:0 14px 30px rgba(0,91,172,0.14); transform:translateY(-3px); border-color:var(--primary);}
+.module-card:hover{box-shadow:0 18px 36px rgba(20,30,60,0.16), 0 4px 10px rgba(20,30,60,0.08); transform:translateY(-4px); border-color:#D3D9E3;}
 
 .module-card .icon{
   width:44px; height:44px; border-radius:12px; margin-bottom:10px;
   display:flex; align-items:center; justify-content:center; flex-shrink:0;
 }
 .module-card .icon .icon-svg{width:22px; height:22px;}
-.module-card.c-navy .icon{background:#EAEEF4; color:#3E5170;}
-.module-card.c-terracotta .icon{background:#FBEEE8; color:#B15A3D;}
+.module-card.c-navy .icon{background:#E8ECFE; color:#4F5FEA;}
+.module-card.c-terracotta .icon{background:#FCE9FA; color:#C13FC0;}
 
-.module-card h3{font-size:15.5px; margin:0; font-weight:700;}
-.module-card p{font-size:12.5px; color:var(--ink-soft); margin:0;}
+.module-card h3{font-size:15.5px; margin:0; font-weight:600; letter-spacing:-0.01em; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
+.module-card p{font-size:12.5px; font-weight:400; color:#9AA6B2; margin:0;}
 
-/* "바로가기" 영역: 호버 전엔 높이 자체를 0으로 접어서 카드 하단에 빈 공간이 남지 않게 함 */
-.cta-wrap{display:grid; grid-template-rows:0fr; transition:grid-template-rows .18s ease;}
-.cta-wrap > *{overflow:hidden; min-height:0;}
-.module-card:hover .cta-wrap{grid-template-rows:1fr;}
-.module-card .cta{font-size:12.5px; font-weight:700; color:var(--primary); display:flex; align-items:center; gap:4px; opacity:0; transition:opacity .15s ease .03s;}
-.module-card:hover .cta{opacity:1;}
-.module-card .cta .icon-svg{width:13px; height:13px;}
+/* "바로가기" 필버튼 - 항상 보이는 작고 납작한 형태 */
+.cta-wrap{display:block; margin-top:2px;}
+.module-card .cta{
+  font-size:11.5px; font-weight:600; color:var(--ink); background:#fff; border:1px solid var(--border);
+  padding:5px 11px; border-radius:999px; display:inline-flex; align-items:center; gap:4px; opacity:1;
+}
+.module-card .cta .icon-svg{width:10px; height:10px;}
 
 /* "다음 자동화 제안" 카드 - 회색/하늘색 톤, 클릭 불가 */
-.module-card.suggest{border:1.5px dashed #cfd9e0; background:linear-gradient(180deg, #f4f8fb 0%, #eef2f5 100%); cursor:default;}
+.module-card.suggest{border:1.5px dashed #cfd9e0; background:linear-gradient(180deg, #f4f8fb 0%, #eef2f5 100%); cursor:default; box-shadow:none;}
 .module-card.suggest:hover{transform:none; box-shadow:none; border-color:#b9c7d1;}
 .module-card.suggest .icon{background:#fff; color:#5B6B7C;}
 .module-card.suggest h3{color:#4a5a68;}
