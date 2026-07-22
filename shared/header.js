@@ -47,7 +47,7 @@
           <rect x="28.5" y="6" width="7" height="25" rx="3.5" transform="rotate(270 32 32)"/>
           <rect x="28.5" y="6" width="7" height="25" rx="3.5" transform="rotate(315 32 32)"/>
         </svg>
-        <span class="lazy">Lazy</span><span class="office">Office</span>
+        <span class="wordmark"><span class="lazy">Lazy</span><span class="office">Office</span></span>
       </a>
       <nav class="desktop-nav">${navLinksHtml}</nav>
       <button class="hamburger-btn" id="lazyHamburgerBtn" aria-label="메뉴 열기" aria-expanded="false">

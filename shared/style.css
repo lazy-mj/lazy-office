@@ -452,8 +452,10 @@ details.readme .body b{color:var(--primary-dark);}
 .site-header .brand{
   font-family:"Clash Display", -apple-system, "Apple SD Gothic Neo", "Pretendard", sans-serif;
   font-size:19px; letter-spacing:-0.02em; text-decoration:none; display:flex; align-items:center; gap:8px;
+  color:#000;
 }
-.site-header .brand .brand-mark{width:18px; height:18px; flex-shrink:0; display:block;}
+.site-header .brand .brand-mark{width:18px; height:18px; flex-shrink:0; display:block; color:#000;}
+.site-header .brand .wordmark{display:flex; align-items:center;}
 .site-header .brand .lazy{color:#000; font-weight:600;}
 .site-header .brand .office{color:#000; font-weight:700;}
 
