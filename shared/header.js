@@ -36,7 +36,19 @@
 
   const headerHtml = `
     <header class="site-header">
-      <a class="brand" href="https://lazy-mj.github.io/lazy-office/"><span class="lazy">Lazy</span><span class="office">Office</span></a>
+      <a class="brand" href="https://lazy-mj.github.io/lazy-office/">
+        <svg class="brand-mark" viewBox="0 0 64 64" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <rect x="28.5" y="6" width="7" height="25" rx="3.5" transform="rotate(0 32 32)"/>
+          <rect x="28.5" y="6" width="7" height="25" rx="3.5" transform="rotate(45 32 32)"/>
+          <rect x="28.5" y="6" width="7" height="25" rx="3.5" transform="rotate(90 32 32)"/>
+          <rect x="28.5" y="6" width="7" height="25" rx="3.5" transform="rotate(135 32 32)"/>
+          <rect x="28.5" y="6" width="7" height="25" rx="3.5" transform="rotate(180 32 32)"/>
+          <rect x="28.5" y="6" width="7" height="25" rx="3.5" transform="rotate(225 32 32)"/>
+          <rect x="28.5" y="6" width="7" height="25" rx="3.5" transform="rotate(270 32 32)"/>
+          <rect x="28.5" y="6" width="7" height="25" rx="3.5" transform="rotate(315 32 32)"/>
+        </svg>
+        <span class="lazy">Lazy</span><span class="office">Office</span>
+      </a>
       <nav class="desktop-nav">${navLinksHtml}</nav>
       <button class="hamburger-btn" id="lazyHamburgerBtn" aria-label="메뉴 열기" aria-expanded="false">
         <svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>

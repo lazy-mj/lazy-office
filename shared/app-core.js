@@ -15,10 +15,21 @@
   }
 
   /* ---------- Toast ---------- */
+  const TOAST_ICONS = {
+    success: '<polyline points="20 6 9 17 4 12"/>',
+    error: '<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>',
+    info: '<circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><line x1="12" y1="8" x2="12.01" y2="8"/>'
+  };
   function showToast(message, type){
     const zone = document.getElementById('toast-zone');
     if(!zone){ console.warn('[AppCore] #toast-zone 요소가 없습니다.'); return; }
-    const t = el('div', 'toast' + (type ? (' ' + type) : ''), message);
+    const kind = (type === 'success' || type === 'error') ? type : 'info';
+    const t = el('div', 'toast' + (type ? (' ' + type) : ''));
+    const icon = el('span', 'dot-icon');
+    icon.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">' + TOAST_ICONS[kind] + '</svg>';
+    const label = el('span', undefined, message);
+    t.appendChild(icon);
+    t.appendChild(label);
     zone.appendChild(t);
     requestAnimationFrame(() => t.classList.add('show'));
     setTimeout(() => {
@@ -46,11 +57,17 @@
   function setStep(n, containerId){
     const root = document.getElementById(containerId || 'stepper');
     if(!root) return;
-    root.querySelectorAll('.step').forEach(li => {
-      const s = Number(li.dataset.step);
-      li.classList.remove('current', 'done');
-      if(s < n) li.classList.add('done');
-      if(s === n) li.classList.add('current');
+    const children = Array.from(root.children);
+    children.forEach((li, i) => {
+      if(li.classList.contains('step')){
+        const s = Number(li.dataset.step);
+        li.classList.remove('current', 'done');
+        if(s < n) li.classList.add('done');
+        if(s === n) li.classList.add('current');
+      } else if(li.classList.contains('connector')){
+        const prevStep = children.slice(0, i).reverse().find(x => x.classList.contains('step'));
+        li.classList.toggle('done', !!(prevStep && prevStep.classList.contains('done')));
+      }
     });
   }
 
