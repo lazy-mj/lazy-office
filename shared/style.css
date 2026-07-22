@@ -433,12 +433,15 @@ details.readme .body b{color:var(--primary-dark);}
 .wordmark .office{color:#000; font-weight:700;}
 .hero p{font-size:15.5px; color:#3D4A58; margin:0 auto 20px; max-width:440px;}
 
+/* 히어로 트러스트 뱃지 3종을 한 줄로 배치하는 wrapper. 개별 .lock-note 필 버튼 디자인 자체는 변경하지 않음 */
+.trust-badges{display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:8px;}
+
 /* .hero 안에서만 적용되는 유리질감 lock-note (다른 페이지의 기본 .lock-note는 그대로 유지됨) */
 .hero .lock-note{
   position:relative; overflow:hidden;
-  display:inline-flex; align-items:center; gap:6px; font-size:12.5px; color:#4F5FEA; font-weight:600; margin:0;
+  display:inline-flex; align-items:center; gap:5px; font-size:12.5px; color:#4F5FEA; font-weight:600; margin:0;
   background:rgba(255,255,255,0.28); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
-  border:1px solid rgba(255,255,255,0.55); padding:5px 12px; border-radius:999px;
+  border:1px solid rgba(255,255,255,0.55); padding:5px 9px; border-radius:999px;
   box-shadow:0 4px 14px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.7);
 }
 .hero .lock-note::after{
