@@ -37,17 +37,8 @@
   const headerHtml = `
     <header class="site-header">
       <a class="brand" href="https://lazy-mj.github.io/lazy-office/">
-        <svg class="brand-mark" viewBox="0 0 64 64" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <rect x="28.5" y="6" width="7" height="25" rx="3.5" transform="rotate(0 32 32)"/>
-          <rect x="28.5" y="6" width="7" height="25" rx="3.5" transform="rotate(45 32 32)"/>
-          <rect x="28.5" y="6" width="7" height="25" rx="3.5" transform="rotate(90 32 32)"/>
-          <rect x="28.5" y="6" width="7" height="25" rx="3.5" transform="rotate(135 32 32)"/>
-          <rect x="28.5" y="6" width="7" height="25" rx="3.5" transform="rotate(180 32 32)"/>
-          <rect x="28.5" y="6" width="7" height="25" rx="3.5" transform="rotate(225 32 32)"/>
-          <rect x="28.5" y="6" width="7" height="25" rx="3.5" transform="rotate(270 32 32)"/>
-          <rect x="28.5" y="6" width="7" height="25" rx="3.5" transform="rotate(315 32 32)"/>
-        </svg>
-        <span class="wordmark"><span class="lazy">Lazy</span><span class="office">Office</span></span>
+        <img class="brand-mark" src="/lazy-office/shared/favicon.svg" alt="">
+        <span class="brand-text"><span class="lazy">Lazy</span><span class="office">Office</span></span>
       </a>
       <nav class="desktop-nav">${navLinksHtml}</nav>
       <button class="hamburger-btn" id="lazyHamburgerBtn" aria-label="메뉴 열기" aria-expanded="false">
