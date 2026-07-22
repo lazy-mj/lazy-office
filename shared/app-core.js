@@ -189,7 +189,7 @@
       box.setAttribute('aria-modal', 'true');
       if(title) box.appendChild(el('div', 'modal-title', title));
       box.appendChild(el('div', 'modal-message', message));
-      const actions = el('div', 'modal-actions');
+      const actions = el('div', neutralText ? 'modal-actions stacked' : 'modal-actions');
       const confirmBtn = el('button', 'btn ' + (danger ? 'btn-danger' : 'btn-primary'), confirmText);
       const cancelBtn = el('button', 'btn btn-outline', cancelText);
       confirmBtn.type = 'button';
