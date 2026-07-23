@@ -564,6 +564,10 @@ body.tool-page{background:#fff;}
 .module-card.c-terracotta .icon{background:#FCE9FA; color:#C13FC0;}
 
 .module-card h3{font-size:15.5px; margin:0; font-weight:600; letter-spacing:-0.01em; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
+.module-card .scope-badge{
+  display:inline-block; font-size:10.5px; font-weight:700; padding:2px 8px; border-radius:999px;
+  background:rgba(0,0,0,0.06); color:#7A8592; margin-left:6px; vertical-align:middle; letter-spacing:0;
+}
 .module-card p{font-size:12.5px; font-weight:400; color:#9AA6B2; margin:0;}
 
 /* "바로가기" 필버튼 - 항상 보이는 작고 납작한 형태 */
