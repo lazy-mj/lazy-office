@@ -9,7 +9,7 @@
      <script src=".../shared/header.js" data-active="billsplit"></script>
      </body>
 
-   data-active 값: "home" | "billsplit" | "jeongsan"
+   data-active 값: "home" | "billsplit" | "jeongsan" | "timecard"
    placeholder를 안 넣어도 동작은 하지만(안전장치 있음), 헤더가 나중에
    삽입되면서 화면이 잠깐 덜컹거리는 걸 막으려면 꼭 넣어주세요.
    헤더 마크업/스타일을 바꿀 일이 있으면 이 파일과 shared/style.css의
@@ -20,7 +20,8 @@
 
   const TABS = [
     { key: 'billsplit', label: '전화요금',  url: 'https://lazy-mj.github.io/lazy-billsplit/' },
-    { key: 'jeongsan',  label: '예산검증',  url: 'https://lazy-mj.github.io/lazy-jeongsan/' }
+    { key: 'jeongsan',  label: '예산검증',  url: 'https://lazy-mj.github.io/lazy-jeongsan/' },
+    { key: 'timecard',  label: '참여율',    url: 'https://lazy-mj.github.io/lazy-timecard/' }
   ];
 
   const activeKey = (document.currentScript && document.currentScript.dataset.active) || 'home';

@@ -4,6 +4,12 @@
 `shared/`를 고치면 `lazy-billsplit`, `lazy-jeongsan` 등 이를 참조하는 모든 도구에 영향을 주므로,
 변경 시 항상 다른 레포에도 재배포가 필요한지 함께 확인하세요.
 
+## v1.1 (2026-11-09)
+
+### 추가
+- 허브에 **참여율 대조 도구**(`lazy-timecard`) 카드 추가 — "개발 중 · 테스트 버전" 표시(주황 점, `.roadmap-line .dot.dot-dev`), 카드 색 `.c-sky`
+- 공통 헤더(`shared/header.js`)에 `참여율` 탭 추가 (`data-active="timecard"`) — 다른 도구 헤더에도 자동 반영, 재배포 필요 없음
+
 ## v1 (2026-07-24)
 
 ### 추가 (`shared/app-core.js`)

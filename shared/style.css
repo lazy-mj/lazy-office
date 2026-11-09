@@ -562,6 +562,8 @@ body.tool-page{background:#fff;}
 .module-card .icon .icon-svg{width:22px; height:22px;}
 .module-card.c-navy .icon{background:#E8ECFE; color:#4F5FEA;}
 .module-card.c-terracotta .icon{background:#FCE9FA; color:#C13FC0;}
+.module-card.c-sky .icon{background:#E0F2FE; color:#0284C7;}
+.module-card .roadmap-line .dot.dot-dev{background:#F59E0B;}
 
 .module-card h3{font-size:15.5px; margin:0; font-weight:600; letter-spacing:-0.01em; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
 .module-card .roadmap-line{display:flex; align-items:center; gap:5px; font-size:11px; color:#9AA6B2; margin-top:-2px;}
