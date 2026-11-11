@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="arch-title arch-desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="460" viewBox="0 0 1200 460" role="img" aria-labelledby="arch-title arch-desc">
   <title id="arch-title">shared/ 하나가 모든 도구에 반영되는 구조</title>
-  <desc id="arch-desc">lazy-office의 shared/ 폴더가 허브 홈페이지와 전화요금 계정분할, 예산 검증 도구에 공통으로 연결되는 구조도. 같은 도메인에서 서버 없이 브라우저 안에서만 처리됩니다.</desc>
+  <desc id="arch-desc">lazy-office의 shared/ 폴더가 허브 홈페이지와 전화요금 계정분할, 예산 검증 도구, 참여율 대조 도구에 공통으로 연결되는 구조도. 같은 도메인에서 서버 없이 브라우저 안에서만 처리됩니다.</desc>
 
-  <rect x="1" y="1" width="1198" height="358" rx="28" fill="#FFFFFF" stroke="#E4E9F1" stroke-width="1.5"/>
+  <rect x="1" y="1" width="1198" height="458" rx="28" fill="#FFFFFF" stroke="#E4E9F1" stroke-width="1.5"/>
 
   <g font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo','Malgun Gothic',sans-serif">
 
     <!-- source node -->
-    <g transform="translate(64 132)">
+    <g transform="translate(64 162)">
       <rect width="248" height="96" rx="16" fill="#E8ECFE" stroke="#C9D3F5" stroke-width="1.5"/>
       <text x="24" y="42" font-size="22" font-weight="800" fill="#3A46C4" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">shared/</text>
       <text x="24" y="66" font-size="16" fill="#5B6B7C">공용 디자인 시스템</text>
@@ -16,14 +16,16 @@
 
     <!-- arrows -->
     <g fill="none" stroke="#B9C7E0" stroke-width="2">
-      <path d="M312 158 C 480 158, 540 84, 758 84"/>
-      <path d="M312 178 C 480 178, 560 180, 758 180"/>
-      <path d="M312 198 C 480 198, 540 276, 758 276"/>
+      <path d="M312 180 C 480 180, 540 84, 758 84"/>
+      <path d="M312 200 C 480 200, 540 180, 758 180"/>
+      <path d="M312 220 C 480 220, 540 276, 758 276"/>
+      <path d="M312 240 C 480 240, 540 372, 758 372"/>
     </g>
     <g fill="#B9C7E0">
       <path d="M750 78 L764 84 L750 90 Z"/>
       <path d="M750 174 L764 180 L750 186 Z"/>
       <path d="M750 270 L764 276 L750 282 Z"/>
+      <path d="M750 366 L764 372 L750 378 Z"/>
     </g>
 
     <!-- destination nodes -->
@@ -42,7 +44,12 @@
       <text x="22" y="32" font-size="20" font-weight="700" fill="#1D2733">예산 검증 도구</text>
       <text x="22" y="56" font-size="16" fill="#8B98A6">lazy-mj.github.io/lazy-jeongsan</text>
     </g>
+    <g transform="translate(764 334)">
+      <rect width="372" height="76" rx="14" fill="#FFFFFF" stroke="#D3D9E3" stroke-width="1.5"/>
+      <text x="22" y="32" font-size="20" font-weight="700" fill="#1D2733">참여율 대조 도구</text>
+      <text x="22" y="56" font-size="16" fill="#8B98A6">lazy-mj.github.io/lazy-timecard</text>
+    </g>
 
-    <text x="600" y="336" text-anchor="middle" font-size="16" fill="#5B6B7C">같은 도메인이라 CDN 없이 공유  ·  처리는 전부 브라우저 안에서만  ·  서버로 데이터 전송 없음</text>
+    <text x="600" y="440" text-anchor="middle" font-size="16" fill="#5B6B7C">같은 도메인이라 CDN 없이 공유  ·  처리는 전부 브라우저 안에서만  ·  서버로 데이터 전송 없음</text>
   </g>
 </svg>

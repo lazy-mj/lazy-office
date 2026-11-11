@@ -11,12 +11,14 @@
 ## ✨ 지금 있는 도구
 
 <p align="center">
-  <img src="./assets/readme/proof.svg" width="100%" alt="LazyOffice 허브 화면에 있는 도구 카드: 전화요금 계정분할 자동화, 예산 검증 도구, 다음 자동화 제안">
+  <img src="./assets/readme/proof.svg" width="100%" alt="LazyOffice 허브 화면에 있는 도구 카드: 전화요금 계정분할 자동화, 예산 검증 도구, 참여율 대조 도구, 다음 자동화 제안">
 </p>
 
 - ✂️ **[전화요금 계정분할 자동화](https://lazy-mj.github.io/lazy-billsplit/)** — 부서별 전화요금을 계정번호별로 자동 분할·집계
 - 💰 **[예산 검증 도구](https://lazy-mj.github.io/lazy-jeongsan/)** — PMS와 이지바로/RCMS 예산을 비목별로 자동 대조 (현재 협약사업만 지원, 기본사업은 지원 준비 중)
-- 📅 **[참여율 대조 도구](https://lazy-mj.github.io/lazy-timecard/)** — PMS와 IRIS 인건비 참여율을 사람별·월별로 자동 대조 (개발 중 · 테스트 버전, RCMS 추가 예정)
+- 📅 **[참여율 대조 도구](https://lazy-mj.github.io/lazy-timecard/)** — PMS와 IRIS·RCMS 인건비 참여율을 사람별·월별로 자동 대조 (개발 중 · 테스트 버전)
+  - IRIS는 참여연구자 엑셀, RCMS는 엑셀 다운로드가 안 돼서 화면 캡처를 브라우저 안에서 글자 인식
+  - 실행계정이 여러 개로 나뉜 과제도 합산 대조, 여러 과제를 한 번에
 
 각 도구는 독립된 저장소이지만, 이 저장소(`lazy-office`)의 `shared/`에 있는 디자인·공통 기능을 그대로 불러와 써서 톤앤매너가 통일되어 있습니다.
 
@@ -27,11 +29,12 @@
 - 업로드한 파일은 서버로 전송되지 않고, 모든 처리는 브라우저 안에서만 이루어집니다.
 - GitHub에는 사용자 데이터가 저장되지 않습니다.
 - 결과 파일은 사용자의 PC로 직접 다운로드됩니다.
+- 캡처 이미지 글자 인식(참여율 대조 도구의 RCMS)도 브라우저 안에서만 이루어지며, 이미지가 어디로도 전송되지 않습니다.
 
 ## 🧩 어떻게 동작하나요
 
 <p align="center">
-  <img src="./assets/readme/architecture.svg" width="100%" alt="shared/ 폴더 하나가 허브 홈페이지와 전화요금 계정분할, 예산 검증 도구에 공통으로 연결되는 구조도">
+  <img src="./assets/readme/architecture.svg" width="100%" alt="shared/ 폴더 하나가 허브 홈페이지와 전화요금 계정분할, 예산 검증 도구, 참여율 대조 도구에 공통으로 연결되는 구조도">
 </p>
 
 `shared/` 폴더 하나를 고치면 이를 참조하는 모든 도구(`lazy-billsplit`, `lazy-jeongsan`, `lazy-timecard` 등)에 동일하게 반영됩니다. 각 도구는 절대경로(`/lazy-office/shared/...`)로 이 폴더를 직접 불러오며, 전부 같은 도메인(`lazy-mj.github.io`)에 있어서 별도 CDN 없이 공유됩니다.
@@ -56,12 +59,14 @@ lazy-office/
 
 ## 📌 버전
 
-현재 버전: **v1.0.0**
+현재 버전: **v1.1** (변경 이력은 [CHANGELOG](./CHANGELOG.md))
 
 ## 💡 향후 계획
 
-- 자동화 모듈 추가 (각각 독립 저장소로 만든 뒤 이 홈페이지에 카드 연결)
+- 참여율 대조 도구 테스트를 마치면 정식 버전으로 ("개발 중" 표시 제거)
 - 예산 검증 도구의 기본사업 지원 여부 검토
+- 다른 도구의 결과 엑셀에도 테두리·색 서식 적용 검토 (참여율 대조 도구 방식)
+- 자동화 모듈 추가 (각각 독립 저장소로 만든 뒤 이 홈페이지에 카드 연결)
 
 ## 📄 라이선스
 

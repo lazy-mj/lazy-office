@@ -7,6 +7,8 @@
 ## v1.1 (2026-11-09)
 
 ### 추가
+- README 업데이트: 도구 목록·그림(도구 카드, 구조도)에 참여율 대조 도구 추가, 버전·향후 계획 정리 (2026-11-11)
+- 루트에 남아 있던 옛 파일(header.js, hub.js, style.css, download) 삭제 — 허브와 모든 도구는 shared/ 만 사용 (v1 정리 때 빠졌던 것)
 - 허브에 **참여율 대조 도구**(`lazy-timecard`) 카드 추가 — "개발 중 · 테스트 버전" 표시(주황 점, `.roadmap-line .dot.dot-dev`), 카드 색 `.c-sky`
 - 공통 헤더(`shared/header.js`)에 `참여율` 탭 추가 (`data-active="timecard"`) — 다른 도구 헤더에도 자동 반영, 재배포 필요 없음
 
